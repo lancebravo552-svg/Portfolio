@@ -40,191 +40,197 @@
 </head>
 <body class="bg-white text-gray-900 min-h-screen">
     <!-- Navigation Sidebar -->
-    <nav class="fixed left-0 top-0 h-screen w-64 bg-navy-900 text-white p-6 z-40" id="sidebar">
-        <div class="mb-8">
-            <h2 class="text-xl font-bold"> Welcome </h2>
+    <nav class="bg-navy-900 text-white z-40" id="sidebar">
+        <div class="sidebar-inner">
+            <h2>Crizz Portfolio</h2>
+            <ul class="mobile-nav">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#resume">Resume</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <nav>
+                <a href="#hero">Home</a>
+                <a href="#projects">Projects</a>
+                <a href="#resume">Resume</a>
+                <a href="#contact">Contact</a>
+            </nav>
         </div>
-        <ul class="space-y-4">
-            <li><a href="#hero" class="block hover:text-blue-300 transition">Home</a></li>
-            <li><a href="#projects" class="block hover:text-blue-300 transition">Projects</a></li>
-            <li><a href="#resume" class="block hover:text-blue-300 transition">Resume</a></li>
-            <li><a href="#contact" class="block hover:text-blue-300 transition">Contact</a></li>
-        </ul>
     </nav>
 
     <!-- Main Content -->
-    <main class="md:ml-64 pl-4 md:pl-8 pr-4 md:pr-8 py-8">
+    <main class="p-4 md:ml-64 md:pl-8 md:pr-8 md:py-8">
         <!-- Hero Section -->
-        <section id="hero" class="min-h-screen flex items-center justify-center py-20">
-            <div class="max-w-4xl mx-auto text-center">
-                <h1 class="text-4xl md:text-6xl font-bold mb-6 text-navy-900">
+        <section id="hero" class="min-h-[60vh] md:min-h-screen flex items-center justify-center py-12 md:py-20">
+            <div class="max-w-4xl mx-auto text-center px-4">
+                <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 text-navy-900">
                     Building secure, centralized infrastructure that scales with your mission
                 </h1>
-                <p class="text-xl md:text-2xl text-gray-600 mb-8">
+                <p class="text-lg md:text-xl lg:text-2xl text-gray-600 mb-6 md:mb-8">
                     Designing emergency management systems where downtime means the difference between success and failure
                 </p>
-                <div class="flex gap-4 justify-center">
-                    <a href="#projects" class="bg-navy-900 text-white px-8 py-3 rounded-lg hover:bg-navy-800 transition">View Projects</a>
-                    <a href="#contact" class="border-2 border-navy-900 px-8 py-3 rounded-lg hover:bg-navy-50 transition">Get in Touch</a>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#projects" class="bg-navy-900 text-white px-6 md:px-8 py-3 rounded-lg hover:bg-navy-800 transition">View Projects</a>
+                    <a href="#contact" class="border-2 border-navy-900 text-navy-900 px-6 md:px-8 py-3 rounded-lg hover:bg-navy-50 transition">Get in Touch</a>
                 </div>
             </div>
         </section>
 
         <!-- Projects Gallery -->
-        <section id="projects" class="py-20">
-            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-navy-900">Featured Projects</h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="project-grid">
+        <section id="projects" class="py-12 md:py-20">
+            <h2 class="text-2xl md:text-4xl font-bold mb-8 md:mb-12 text-center text-navy-900">Featured Projects</h2>
+            <div class="project-grid max-w-7xl mx-auto px-4">
                 <!-- Project 1: Emergency Dispatch System -->
                 <article class="project-card bg-white rounded-lg shadow-lg overflow-hidden border border-gray-100" data-project="1">
-                    <!-- Replace with your image: project1.png -->
+                    <!-- Replace with your image: dispatch.jpg -->
                     <img src="dispatch.jpg" alt="Emergency Dispatch System" class="w-full aspect-video object-cover bg-gray-100">
-                    <div class="p-6">
+                    <div class="p-4 md:p-6">
                         <span class="text-sm font-semibold text-blue-600">Critical Infrastructure</span>
-                        <h3 class="text-2xl font-bold mt-2 mb-4 text-navy-900">Centralized Emergency Dispatch System</h3>
-                        <p class="text-gray-600 mb-4">
+                        <h3 class="text-lg md:text-2xl font-bold mt-2 mb-2 md:mb-4 text-navy-900">Centralized Emergency Dispatch System</h3>
+                        <p class="text-gray-600 mb-3 md:mb-4 text-sm md:text-base">
                             A real-time dispatch platform coordinating emergency responders across multiple jurisdictions during critical incidents.
                         </p>
-                        <div class="mb-4">
-                            <h4 class="font-semibold text-sm mb-2 text-navy-800">Problem</h4>
+                        <div class="mb-3 md:mb-4">
+                            <h4 class="font-semibold text-sm mb-1 md:mb-2 text-navy-800">Problem</h4>
                             <p class="text-gray-600 text-sm">
                                 Fragmented communication between agencies caused 12-minute average response delays during multi-agency emergencies.
                             </p>
                         </div>
-                        <div class="mb-4">
-                            <h4 class="font-semibold text-sm mb-2 text-navy-800">Solution</h4>
+                        <div class="mb-3 md:mb-4">
+                            <h4 class="font-semibold text-sm mb-1 md:mb-2 text-navy-800">Solution</h4>
                             <p class="text-gray-600 text-sm">
                                 Built centralized WebSocket-based dispatch platform with role-based access control, reducing coordination overhead by 70%.
                             </p>
                         </div>
-                        <div class="mb-6">
+                        <div class="mb-4 md:mb-6">
                             <h4 class="font-semibold text-sm mb-2 text-navy-800">Tech Stack</h4>
                             <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">JavaScript</span>
-                                <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs">SQL</span>
-                                <span class="px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-xs">Cloudflare</span>
+                                <span class="px-2 md:px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">JavaScript</span>
+                                <span class="px-2 md:px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs">SQL</span>
+                                <span class="px-2 md:px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-xs">Cloudflare</span>
                             </div>
                         </div>
-                        <a href="#" class="text-navy-700 font-semibold hover:underline">View Case Study →</a>
+                        <a href="#" class="text-navy-700 font-semibold hover:underline text-sm md:text-base">View Case Study →</a>
                     </div>
                 </article>
 
                 <!-- Project 2: Security Platform -->
                 <article class="project-card bg-white rounded-lg shadow-lg overflow-hidden border border-gray-100" data-project="2">
-                    <!-- Replace with your image: project2.png -->
+                    <!-- Replace with your image: security.jpg -->
                     <img src="security.jpg" alt="Vulnerability Scanner" class="w-full aspect-video object-cover bg-gray-100">
-                    <div class="p-6">
+                    <div class="p-4 md:p-6">
                         <span class="text-sm font-semibold text-red-600">Cybersecurity</span>
-                        <h3 class="text-2xl font-bold mt-2 mb-4 text-navy-900">Enterprise Vulnerability Scanner</h3>
-                        <p class="text-gray-600 mb-4">
+                        <h3 class="text-lg md:text-2xl font-bold mt-2 mb-2 md:mb-4 text-navy-900">Enterprise Vulnerability Scanner</h3>
+                        <p class="text-gray-600 mb-3 md:mb-4 text-sm md:text-base">
                             Automated security scanning platform identifying vulnerabilities across hybrid cloud environments before exploitation.
                         </p>
-                        <div class="mb-4">
-                            <h4 class="font-semibold text-sm mb-2 text-navy-800">Problem</h4>
+                        <div class="mb-3 md:mb-4">
+                            <h4 class="font-semibold text-sm mb-1 md:mb-2 text-navy-800">Problem</h4>
                             <p class="text-gray-600 text-sm">
                                 Manual penetration testing couldn't keep pace with weekly deployment cycles, leaving security gaps.
                             </p>
                         </div>
-                        <div class="mb-4">
-                            <h4 class="font-semibold text-sm mb-2 text-navy-800">Solution</h4>
+                        <div class="mb-3 md:mb-4">
+                            <h4 class="font-semibold text-sm mb-1 md:mb-2 text-navy-800">Solution</h4>
                             <p class="text-gray-600 text-sm">
                                 Implemented CI/CD-integrated scanner with 95% accuracy, reducing mean-time-to-detection from weeks to hours.
                             </p>
                         </div>
-                        <div class="mb-6">
+                        <div class="mb-4 md:mb-6">
                             <h4 class="font-semibold text-sm mb-2 text-navy-800">Tech Stack</h4>
                             <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-xs">Python</span>
-                                <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs">PostgreSQL</span>
-                                <span class="px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-xs">Docker</span>
+                                <span class="px-2 md:px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-xs">Python</span>
+                                <span class="px-2 md:px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs">PostgreSQL</span>
+                                <span class="px-2 md:px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-xs">Docker</span>
                             </div>
                         </div>
-                        <a href="#" class="text-navy-700 font-semibold hover:underline">Read More →</a>
+                        <a href="#" class="text-navy-700 font-semibold hover:underline text-sm md:text-base">Read More →</a>
                     </div>
                 </article>
 
                 <!-- Project 3: Infrastructure Dashboard -->
                 <article class="project-card bg-white rounded-lg shadow-lg overflow-hidden border border-gray-100" data-project="3">
-                    <!-- Replace with your image: project3.png -->
+                    <!-- Replace with your image: cloud.png -->
                     <img src="cloud.png" alt="Infrastructure Orchestrator" class="w-full aspect-video object-cover bg-gray-100">
-                    <div class="p-6">
+                    <div class="p-4 md:p-6">
                         <span class="text-sm font-semibold text-green-600">DevOps</span>
-                        <h3 class="text-2xl font-bold mt-2 mb-4 text-navy-900">Multi-Cloud Infrastructure Orchestrator</h3>
-                        <p class="text-gray-600 mb-4">
+                        <h3 class="text-lg md:text-2xl font-bold mt-2 mb-2 md:mb-4 text-navy-900">Multi-Cloud Infrastructure Orchestrator</h3>
+                        <p class="text-gray-600 mb-3 md:mb-4 text-sm md:text-base">
                             Unified dashboard managing resources across AWS, GCP, and Azure with single-pane-of-glass visibility.
                         </p>
-                        <div class="mb-4">
-                            <h4 class="font-semibold text-sm mb-2 text-navy-800">Problem</h4>
+                        <div class="mb-3 md:mb-4">
+                            <h4 class="font-semibold text-sm mb-1 md:mb-2 text-navy-800">Problem</h4>
                             <p class="text-gray-600 text-sm">
                                 Teams spent 40% of their time switching between cloud provider consoles and managing credentials.
                             </p>
                         </div>
-                        <div class="mb-4">
-                            <h4 class="font-semibold text-sm mb-2 text-navy-800">Solution</h4>
+                        <div class="mb-3 md:mb-4">
+                            <h4 class="font-semibold text-sm mb-1 md:mb-2 text-navy-800">Solution</h4>
                             <p class="text-gray-600 text-sm">
                                 Developed centralized control plane with unified API, cutting management overhead by 65%.
                             </p>
                         </div>
-                        <div class="mb-6">
+                        <div class="mb-4 md:mb-6">
                             <h4 class="font-semibold text-sm mb-2 text-navy-800">Tech Stack</h4>
                             <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-xs">Go</span>
-                                <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">Kubernetes</span>
-                                <span class="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-xs">Terraform</span>
+                                <span class="px-2 md:px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-xs">Go</span>
+                                <span class="px-2 md:px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">Kubernetes</span>
+                                <span class="px-2 md:px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-xs">Terraform</span>
                             </div>
                         </div>
-                        <a href="#" class="text-navy-700 font-semibold hover:underline">Explore Project →</a>
+                        <a href="#" class="text-navy-700 font-semibold hover:underline text-sm md:text-base">Explore Project →</a>
                     </div>
                 </article>
             </div>
         </section>
 
         <!-- Live Resume Section -->
-        <section id="resume" class="py-20 bg-gray-50">
-            <div class="max-w-4xl mx-auto">
-                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-navy-900">Professional Resume</h2>
+        <section id="resume" class="py-12 md:py-20 bg-gray-50">
+            <div class="max-w-4xl mx-auto px-4">
+                <h2 class="text-2xl md:text-4xl font-bold mb-8 md:mb-12 text-center text-navy-900">Professional Resume</h2>
 
                 <!-- Technical Skills -->
-                <div class="mb-12">
-                    <h3 class="text-2xl font-semibold mb-6 text-navy-800">Technical Skills</h3>
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div class="skill-category bg-white p-6 rounded-lg shadow">
-                            <h4 class="font-semibold mb-3 text-navy-700">Cybersecurity</h4>
-                            <ul class="space-y-2 text-gray-600">
+                <div class="mb-8 md:mb-12">
+                    <h3 class="text-xl md:text-2xl font-semibold mb-4 md:mb-6 text-navy-800">Technical Skills</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                        <div class="skill-category bg-white p-4 md:p-6 rounded-lg shadow">
+                            <h4 class="font-semibold mb-2 md:mb-3 text-navy-700">Cybersecurity</h4>
+                            <ul class="space-y-1 md:space-y-2 text-sm md:text-base text-gray-600">
                                 <li class="flex items-center">
-                                    <span class="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                                    <span class="w-2 h-2 bg-blue-500 rounded-full mr-2 md:mr-3"></span>
                                     Penetration Testing (Web, API, Network)
                                 </li>
                                 <li class="flex items-center">
-                                    <span class="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                                    <span class="w-2 h-2 bg-blue-500 rounded-full mr-2 md:mr-3"></span>
                                     Threat Modeling & Risk Assessment
                                 </li>
                                 <li class="flex items-center">
-                                    <span class="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                                    <span class="w-2 h-2 bg-blue-500 rounded-full mr-2 md:mr-3"></span>
                                     Security Architecture Review
                                 </li>
                                 <li class="flex items-center">
-                                    <span class="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                                    <span class="w-2 h-2 bg-blue-500 rounded-full mr-2 md:mr-3"></span>
                                     Incident Response & Forensics
                                 </li>
                             </ul>
                         </div>
-                        <div class="skill-category bg-white p-6 rounded-lg shadow">
-                            <h4 class="font-semibold mb-3 text-navy-700">Full-Stack Development</h4>
-                            <ul class="space-y-2 text-gray-600">
+                        <div class="skill-category bg-white p-4 md:p-6 rounded-lg shadow">
+                            <h4 class="font-semibold mb-2 md:mb-3 text-navy-700">Full-Stack Development</h4>
+                            <ul class="space-y-1 md:space-y-2 text-sm md:text-base text-gray-600">
                                 <li class="flex items-center">
-                                    <span class="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
+                                    <span class="w-2 h-2 bg-green-500 rounded-full mr-2 md:mr-3"></span>
                                     JavaScript/TypeScript, Node.js, React
                                 </li>
                                 <li class="flex items-center">
-                                    <span class="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
+                                    <span class="w-2 h-2 bg-green-500 rounded-full mr-2 md:mr-3"></span>
                                     Python, Go, Java
                                 </li>
                                 <li class="flex items-center">
-                                    <span class="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
+                                    <span class="w-2 h-2 bg-green-500 rounded-full mr-2 md:mr-3"></span>
                                     PostgreSQL, Redis, Elasticsearch
                                 </li>
                                 <li class="flex items-center">
-                                    <span class="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
+                                    <span class="w-2 h-2 bg-green-500 rounded-full mr-2 md:mr-3"></span>
                                     AWS, GCP, Azure, Cloudflare
                                 </li>
                             </ul>
@@ -234,51 +240,59 @@
 
                 <!-- Experience Timeline -->
                 <div>
-                    <h3 class="text-2xl font-semibold mb-6 text-navy-800">Experience</h3>
-                    <div class="space-y-6">
-                        <div class="experience-item bg-white p-6 rounded-lg shadow border-l-4 border-navy-900">
+                    <h3 class="text-xl md:text-2xl font-semibold mb-4 md:mb-6 text-navy-800">Experience</h3>
+                    <div class="space-y-4 md:space-y-6">
+                        <div class="experience-item bg-white p-4 md:p-6 rounded-lg shadow border-l-4 border-navy-900">
                             <div class="flex flex-col md:flex-row md:justify-between mb-2">
-                                <h4 class="text-lg font-semibold text-navy-900">Senior Full-Stack Engineer</h4>
-                                <span class="text-gray-500">2021 - Present</span>
+                                <h4 class="text-base md:text-lg font-semibold text-navy-900">Senior Full-Stack Engineer</h4>
+                                <span class="text-gray-500 text-sm">2021 - Present</span>
                             </div>
-                            <p class="text-gray-700 font-medium mb-2">TechSecure Solutions</p>
-                            <p class="text-gray-600">Architected scalable, secure systems for Fortune 500 clients, reducing infrastructure costs by 40% while improving security posture.</p>
+                            <p class="text-gray-700 font-medium mb-1 md:mb-2 text-sm md:text-base">TechSecure Solutions</p>
+                            <p class="text-gray-600 text-sm md:text-base">Architected scalable, secure systems for Fortune 500 clients, reducing infrastructure costs by 40% while improving security posture.</p>
                         </div>
-                        <div class="experience-item bg-white p-6 rounded-lg shadow border-l-4 border-navy-900">
+                        <div class="experience-item bg-white p-4 md:p-6 rounded-lg shadow border-l-4 border-navy-900">
                             <div class="flex flex-col md:flex-row md:justify-between mb-2">
-                                <h4 class="text-lg font-semibold text-navy-900">DevOps Engineer</h4>
-                                <span class="text-gray-500">2018 - 2021</span>
+                                <h4 class="text-base md:text-lg font-semibold text-navy-900">DevOps Engineer</h4>
+                                <span class="text-gray-500 text-sm">2018 - 2021</span>
                             </div>
-                            <p class="text-gray-700 font-medium mb-2">CloudScale Inc.</p>
-                            <p class="text-gray-600">Led migration of legacy monoliths to microservices on AWS, implementing Infrastructure as Code with Terraform and achieving 99.99% uptime.</p>
+                            <p class="text-gray-700 font-medium mb-1 md:mb-2 text-sm md:text-base">CloudScale Inc.</p>
+                            <p class="text-gray-600 text-sm md:text-base">Led migration of legacy monoliths to microservices on AWS, implementing Infrastructure as Code with Terraform and achieving 99.99% uptime.</p>
                         </div>
-                        <div class="experience-item bg-white p-6 rounded-lg shadow border-l-4 border-navy-900">
+                        <div class="experience-item bg-white p-4 md:p-6 rounded-lg shadow border-l-4 border-navy-900">
                             <div class="flex flex-col md:flex-row md:justify-between mb-2">
-                                <h4 class="text-lg font-semibold text-navy-900">Security Consultant</h4>
-                                <span class="text-gray-500">2016 - 2018</span>
+                                <h4 class="text-base md:text-lg font-semibold text-navy-900">Security Consultant</h4>
+                                <span class="text-gray-500 text-sm">2016 - 2018</span>
                             </div>
-                            <p class="text-gray-700 font-medium mb-2">CyberDefense Associates</p>
-                            <p class="text-gray-600">Conducted penetration tests and security audits for healthcare and finance sectors, identifying critical vulnerabilities before exploitation.</p>
+                            <p class="text-gray-700 font-medium mb-1 md:mb-2 text-sm md:text-base">CyberDefense Associates</p>
+                            <p class="text-gray-600 text-sm md:text-base">Conducted penetration tests and security audits for healthcare and finance sectors, identifying critical vulnerabilities before exploitation.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Contact Form -->
-        <section id="contact" class="py-20">
-            <div class="max-w-2xl mx-auto">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center text-navy-900">Get in Touch</h2>
-                <p class="text-center text-gray-600 mb-12">
+        <!-- Contact Section -->
+        <section id="contact" class="py-12 md:py-20">
+            <div class="max-w-2xl mx-auto px-4">
+                <h2 class="text-2xl md:text-4xl font-bold mb-4 text-center text-navy-900">Get in Touch</h2>
+                <p class="text-center text-gray-600 mb-8 md:mb-12">
                     Interested in collaborating on emergency management systems or secure infrastructure projects? Let's connect.
                 </p>
 
-                <div class="bg-white p-8 rounded-lg shadow-lg border border-gray-100 text-center">
-                    <p class="text-gray-600 mb-6">I'd love to hear about your project. Reach out and let's discuss how I can help.</p>
-                    <a href="https://mail.google.com/mail/?view=cm&to=lancebravo552@gmail.com" target="_blank" class="inline-block  bg-navy-900 text-gray-700 border border-navy-900 px-8 py-3 rounded-lg font-semibold hover:bg-navy-800 transition">
-                        Send an Email
-                    </a>
-                </div>
+                 <div class="contact-box">
+                     <p class="text-gray-600 mb-4 md:mb-6">I'd love to hear about your project. Reach out and let's discuss how I can help.</p>
+                     <a href="https://mail.google.com/mail/?view=cm&to=lancebravo552@gmail.com" target="_blank" class="email-btn">
+                         Send an Email
+                     </a>
+                     <div class="social-icons">
+                         <a href="https://www.facebook.com/crisjermaine.bravo" target="_blank" class="social-link fb">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                         </a>
+                         <a href="https://www.instagram.com/criz.py_" target="_blank" class="social-link ig">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                         </a>
+                     </div>
+                 </div>
             </div>
         </section>
 
