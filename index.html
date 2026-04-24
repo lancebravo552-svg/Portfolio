@@ -7,8 +7,10 @@
     <meta name="theme-color" content="#001f3f">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
+    <!-- Accessibility: Skip link for keyboard navigation -->
+    <link rel="icon" href="data:,">
+
     <!-- Performance: Preconnect to CDN -->
-    <link rel="preconnect" href="https://cdn.tailwindcss.com">
 
     <!-- Security: Content Security Policy -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; img-src 'self' data: https:; font-src 'self' data:">
@@ -39,8 +41,11 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="bg-white text-gray-900 min-h-screen">
+    <!-- Skip to main content for keyboard users -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <!-- Navigation Sidebar -->
-    <nav class="bg-navy-900 text-white z-40" id="sidebar">
+    <nav class="bg-navy-900 text-white z-40" id="sidebar" aria-label="Main navigation">
         <div class="sidebar-inner">
             <h2>Crizz Portfolio</h2>
             <ul class="mobile-nav">
@@ -58,8 +63,8 @@
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <main class="p-4 md:ml-64 md:pl-8 md:pr-8 md:py-8">
+     <!-- Main Content -->
+     <main class="p-4 md:ml-64 md:pl-8 md:pr-8 md:py-8" id="main-content" tabindex="-1">
         <!-- Hero Section -->
         <section id="hero" class="min-h-[60vh] md:min-h-screen flex items-center justify-center py-12 md:py-20">
             <div class="max-w-4xl mx-auto text-center px-4">
@@ -82,11 +87,11 @@
             <div class="project-grid max-w-7xl mx-auto px-4">
                 <!-- Project 1: Emergency Dispatch System -->
                 <article class="project-card bg-white rounded-lg shadow-lg overflow-hidden border border-gray-100" data-project="1">
-                    <!-- Replace with your image: dispatch.jpg -->
-                    <img src="dispatch.jpg" alt="Emergency Dispatch System" class="w-full aspect-video object-cover bg-gray-100">
+                    <!-- Replace with your image: dispatch.png -->
+                    <img src="dispatch.png" alt="Emergency Dispatch System" class="w-full aspect-video object-cover bg-gray-100" loading="lazy">
                     <div class="p-4 md:p-6">
-                        <span class="text-sm font-semibold text-blue-600">Critical Infrastructure</span>
-                        <h3 class="text-lg md:text-2xl font-bold mt-2 mb-2 md:mb-4 text-navy-900">Centralized Emergency Dispatch System</h3>
+                        <span class="text-sm font-semibold text-blue-600">Centralized Emergency Dispatch System</span>
+                        <h3 class="text-lg md:text-2xl font-bold mt-2 mb-2 md:mb-4 text-navy-900">SAFEZONE</h3>
                         <p class="text-gray-600 mb-3 md:mb-4 text-sm md:text-base">
                             A real-time dispatch platform coordinating emergency responders across multiple jurisdictions during critical incidents.
                         </p>
@@ -106,79 +111,77 @@
                             <h4 class="font-semibold text-sm mb-2 text-navy-800">Tech Stack</h4>
                             <div class="flex flex-wrap gap-2">
                                 <span class="px-2 md:px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">JavaScript</span>
-                                <span class="px-2 md:px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs">SQL</span>
-                                <span class="px-2 md:px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-xs">Cloudflare</span>
+                                <span class="px-2 md:px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs">SupabaseSQL</span>
+                                <span class="px-2 md:px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-xs">HTML</span>
                             </div>
                         </div>
-                        <a href="#" class="text-navy-700 font-semibold hover:underline text-sm md:text-base">View Case Study →</a>
+                        <a href="#" class="project-link text-navy-700 font-semibold hover:underline text-sm md:text-base">View Case Study →</a>
                     </div>
                 </article>
 
                 <!-- Project 2: Security Platform -->
                 <article class="project-card bg-white rounded-lg shadow-lg overflow-hidden border border-gray-100" data-project="2">
                     <!-- Replace with your image: security.jpg -->
-                    <img src="security.jpg" alt="Vulnerability Scanner" class="w-full aspect-video object-cover bg-gray-100">
+                    <img src="shoes.png" alt="NYEK Sneaker Shop product page showing sneaker listings" class="w-full aspect-video object-cover bg-gray-100" loading="lazy">
                     <div class="p-4 md:p-6">
-                        <span class="text-sm font-semibold text-red-600">Cybersecurity</span>
-                        <h3 class="text-lg md:text-2xl font-bold mt-2 mb-2 md:mb-4 text-navy-900">Enterprise Vulnerability Scanner</h3>
+                        <span class="text-sm font-semibold text-red-600">Online Shoe Reselling Site</span>
+                        <h3 class="text-lg md:text-2xl font-bold mt-2 mb-2 md:mb-4 text-navy-900">NYEK SNEAKER SHOP</h3>
                         <p class="text-gray-600 mb-3 md:mb-4 text-sm md:text-base">
-                            Automated security scanning platform identifying vulnerabilities across hybrid cloud environments before exploitation.
+                            An automated marketplace and authentication engine connecting independent sellers with global collectors, specializing in deadstock and limited-edition releases.
                         </p>
                         <div class="mb-3 md:mb-4">
                             <h4 class="font-semibold text-sm mb-1 md:mb-2 text-navy-800">Problem</h4>
                             <p class="text-gray-600 text-sm">
-                                Manual penetration testing couldn't keep pace with weekly deployment cycles, leaving security gaps.
+                               The "manual" era of shoe reselling relied on risky peer-to-peer transactions. Sellers struggled with inconsistent pricing due to rapid market shifts, while buyers faced a high volume of counterfeit products, leading to low trust and lost revenue.
                             </p>
                         </div>
                         <div class="mb-3 md:mb-4">
                             <h4 class="font-semibold text-sm mb-1 md:mb-2 text-navy-800">Solution</h4>
                             <p class="text-gray-600 text-sm">
-                                Implemented CI/CD-integrated scanner with 95% accuracy, reducing mean-time-to-detection from weeks to hours.
+                                We launched a centralized marketplace that integrates real-time global market data to provide sellers with accurate, dynamic pricing suggestions. To eliminate fraud, the platform utilizes a hybrid authentication model combining AI-driven image recognition with expert physical inspections. This secure ecosystem uses an escrow payment system that only releases funds once a pair is verified, effectively cutting chargebacks by 88%.
                             </p>
                         </div>
-                        <div class="mb-4 md:mb-6">
-                            <h4 class="font-semibold text-sm mb-2 text-navy-800">Tech Stack</h4>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-2 md:px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-xs">Python</span>
-                                <span class="px-2 md:px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs">PostgreSQL</span>
-                                <span class="px-2 md:px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-xs">Docker</span>
-                            </div>
-                        </div>
-                        <a href="#" class="text-navy-700 font-semibold hover:underline text-sm md:text-base">Read More →</a>
+                         <div class="mb-4 md:mb-6">
+                             <h4 class="font-semibold text-sm mb-2 text-navy-800">Tech Stack</h4>
+                             <div class="flex flex-wrap gap-2">
+                                 <span class="px-2 md:px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-xs">HTML</span>
+                                 <span class="px-2 md:px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs">Tailwind CSS</span>
+                                 <span class="px-2 md:px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-xs">JavaScript</span>
+                             </div>
+                         </div>
+                         <a href="#" class="project-link text-navy-700 font-semibold hover:underline text-sm md:text-base">Read More →</a>
                     </div>
                 </article>
 
                 <!-- Project 3: Infrastructure Dashboard -->
                 <article class="project-card bg-white rounded-lg shadow-lg overflow-hidden border border-gray-100" data-project="3">
                     <!-- Replace with your image: cloud.png -->
-                    <img src="cloud.png" alt="Infrastructure Orchestrator" class="w-full aspect-video object-cover bg-gray-100">
+                    <img src="data.png" alt="Infrastructure Orchestrator dashboard interface" class="w-full aspect-video object-cover bg-gray-100" loading="lazy">
                     <div class="p-4 md:p-6">
-                        <span class="text-sm font-semibold text-green-600">DevOps</span>
-                        <h3 class="text-lg md:text-2xl font-bold mt-2 mb-2 md:mb-4 text-navy-900">Multi-Cloud Infrastructure Orchestrator</h3>
+                        <span class="text-sm font-semibold text-green-600"> PC Accessories Online Shop</span>
+                        <h3 class="text-lg md:text-2xl font-bold mt-2 mb-2 md:mb-4 text-navy-900"> DATABAE</h3>
                         <p class="text-gray-600 mb-3 md:mb-4 text-sm md:text-base">
-                            Unified dashboard managing resources across AWS, GCP, and Azure with single-pane-of-glass visibility.
+                            A modern e-commerce platform for browsing and purchasing PC components and accessories, designed for gamers, builders, and tech enthusiasts.
                         </p>
                         <div class="mb-3 md:mb-4">
                             <h4 class="font-semibold text-sm mb-1 md:mb-2 text-navy-800">Problem</h4>
                             <p class="text-gray-600 text-sm">
-                                Teams spent 40% of their time switching between cloud provider consoles and managing credentials.
+                                Customers struggled to find reliable, well-priced PC parts across multiple platforms, leading to inconsistent product availability and time-consuming comparisons.
                             </p>
                         </div>
                         <div class="mb-3 md:mb-4">
                             <h4 class="font-semibold text-sm mb-1 md:mb-2 text-navy-800">Solution</h4>
                             <p class="text-gray-600 text-sm">
-                                Developed centralized control plane with unified API, cutting management overhead by 65%.
+                                Developed a user-friendly mobile app with real-time inventory, smart search, and curated recommendations—streamlining the buying process and improving purchase efficiency.
                             </p>
                         </div>
                         <div class="mb-4 md:mb-6">
                             <h4 class="font-semibold text-sm mb-2 text-navy-800">Tech Stack</h4>
                             <div class="flex flex-wrap gap-2">
-                                <span class="px-2 md:px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-xs">Go</span>
-                                <span class="px-2 md:px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">Kubernetes</span>
-                                <span class="px-2 md:px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-xs">Terraform</span>
+                                <span class="px-2 md:px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-xs"> Figma</span>
                             </div>
                         </div>
-                        <a href="#" class="text-navy-700 font-semibold hover:underline text-sm md:text-base">Explore Project →</a>
+                        <a href="#" class="project-link text-navy-700 font-semibold hover:underline text-sm md:text-base">Explore Project →</a>
                     </div>
                 </article>
             </div>
@@ -194,44 +197,11 @@
                     <h3 class="text-xl md:text-2xl font-semibold mb-4 md:mb-6 text-navy-800">Technical Skills</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                         <div class="skill-category bg-white p-4 md:p-6 rounded-lg shadow">
-                            <h4 class="font-semibold mb-2 md:mb-3 text-navy-700">Cybersecurity</h4>
-                            <ul class="space-y-1 md:space-y-2 text-sm md:text-base text-gray-600">
-                                <li class="flex items-center">
-                                    <span class="w-2 h-2 bg-blue-500 rounded-full mr-2 md:mr-3"></span>
-                                    Penetration Testing (Web, API, Network)
-                                </li>
-                                <li class="flex items-center">
-                                    <span class="w-2 h-2 bg-blue-500 rounded-full mr-2 md:mr-3"></span>
-                                    Threat Modeling & Risk Assessment
-                                </li>
-                                <li class="flex items-center">
-                                    <span class="w-2 h-2 bg-blue-500 rounded-full mr-2 md:mr-3"></span>
-                                    Security Architecture Review
-                                </li>
-                                <li class="flex items-center">
-                                    <span class="w-2 h-2 bg-blue-500 rounded-full mr-2 md:mr-3"></span>
-                                    Incident Response & Forensics
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="skill-category bg-white p-4 md:p-6 rounded-lg shadow">
                             <h4 class="font-semibold mb-2 md:mb-3 text-navy-700">Full-Stack Development</h4>
                             <ul class="space-y-1 md:space-y-2 text-sm md:text-base text-gray-600">
                                 <li class="flex items-center">
                                     <span class="w-2 h-2 bg-green-500 rounded-full mr-2 md:mr-3"></span>
-                                    JavaScript/TypeScript, Node.js, React
-                                </li>
-                                <li class="flex items-center">
-                                    <span class="w-2 h-2 bg-green-500 rounded-full mr-2 md:mr-3"></span>
-                                    Python, Go, Java
-                                </li>
-                                <li class="flex items-center">
-                                    <span class="w-2 h-2 bg-green-500 rounded-full mr-2 md:mr-3"></span>
-                                    PostgreSQL, Redis, Elasticsearch
-                                </li>
-                                <li class="flex items-center">
-                                    <span class="w-2 h-2 bg-green-500 rounded-full mr-2 md:mr-3"></span>
-                                    AWS, GCP, Azure, Cloudflare
+                                    HTML, CSS, Tailwind, JavaScript, SupabaseSQL
                                 </li>
                             </ul>
                         </div>
@@ -250,22 +220,7 @@
                             <p class="text-gray-700 font-medium mb-1 md:mb-2 text-sm md:text-base">TechSecure Solutions</p>
                             <p class="text-gray-600 text-sm md:text-base">Architected scalable, secure systems for Fortune 500 clients, reducing infrastructure costs by 40% while improving security posture.</p>
                         </div>
-                        <div class="experience-item bg-white p-4 md:p-6 rounded-lg shadow border-l-4 border-navy-900">
-                            <div class="flex flex-col md:flex-row md:justify-between mb-2">
-                                <h4 class="text-base md:text-lg font-semibold text-navy-900">DevOps Engineer</h4>
-                                <span class="text-gray-500 text-sm">2018 - 2021</span>
-                            </div>
-                            <p class="text-gray-700 font-medium mb-1 md:mb-2 text-sm md:text-base">CloudScale Inc.</p>
-                            <p class="text-gray-600 text-sm md:text-base">Led migration of legacy monoliths to microservices on AWS, implementing Infrastructure as Code with Terraform and achieving 99.99% uptime.</p>
-                        </div>
-                        <div class="experience-item bg-white p-4 md:p-6 rounded-lg shadow border-l-4 border-navy-900">
-                            <div class="flex flex-col md:flex-row md:justify-between mb-2">
-                                <h4 class="text-base md:text-lg font-semibold text-navy-900">Security Consultant</h4>
-                                <span class="text-gray-500 text-sm">2016 - 2018</span>
-                            </div>
-                            <p class="text-gray-700 font-medium mb-1 md:mb-2 text-sm md:text-base">CyberDefense Associates</p>
-                            <p class="text-gray-600 text-sm md:text-base">Conducted penetration tests and security audits for healthcare and finance sectors, identifying critical vulnerabilities before exploitation.</p>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -284,17 +239,30 @@
                      <a href="https://mail.google.com/mail/?view=cm&to=lancebravo552@gmail.com" target="_blank" class="email-btn">
                          Send an Email
                      </a>
-                     <div class="social-icons">
-                         <a href="https://www.facebook.com/crisjermaine.bravo" target="_blank" class="social-link fb">
-                             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                         </a>
-                         <a href="https://www.instagram.com/criz.py_" target="_blank" class="social-link ig">
-                             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-                         </a>
-                     </div>
+                      <div class="social-icons">
+                          <a href="https://www.facebook.com/crisjermaine.bravo" target="_blank" class="social-link fb">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                              <span class="social-name">Cris Jermaine Bravo</span>
+                          </a>
+                          <a href="https://www.instagram.com/criz.py_" target="_blank" class="social-link ig">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                              <span class="social-name">@criz.py_</span>
+                          </a>
+                          <a href="https://www.instagram.com/criz.py_" target="_blank" class="social-link ig" aria-label="Follow on Instagram">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                              <span class="social-name">@criz.py_</span>
+                          </a>
+                      </div>
                  </div>
             </div>
         </section>
+
+        <!-- Back to top button -->
+        <button id="backToTop" class="back-to-top" aria-label="Back to top" type="button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M18 15l-6-6-6 6"/>
+            </svg>
+        </button>
 
         <!-- Footer -->
         <footer class="py-8 border-t border-gray-200 text-center text-gray-500">
@@ -302,4 +270,4 @@
         </footer>
     </main>
 </body>
-</html>
+</html   

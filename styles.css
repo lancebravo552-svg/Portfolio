@@ -8,6 +8,46 @@ html {
     scroll-behavior: smooth;
 }
 
+/* Skip Link for Keyboard Navigation */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #001f3f;
+    color: white;
+    padding: 8px 16px;
+    z-index: 10000;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 0 0 8px 0;
+    transition: top 0.2s;
+}
+
+.skip-link:focus {
+    top: 0;
+    outline: 3px solid #93c5fd;
+    outline-offset: 2px;
+}
+
+/* Enhanced Focus Visible Styles for Accessibility */
+*:focus-visible {
+    outline: 3px solid #2563eb;
+    outline-offset: 2px;
+}
+
+/* Remove default focus for mouse users but keep for keyboard */
+*:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* Custom focus for buttons and links */
+a:focus-visible,
+button:focus-visible {
+    outline: 3px solid #2563eb;
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     line-height: 1.6;
@@ -48,7 +88,7 @@ body {
 }
 
 #sidebar .mobile-nav a {
-    color: #cbd5e1;
+    color: #e2e8f0;
     font-size: 0.875rem;
     font-weight: 500;
     transition: color 0.2s;
@@ -56,7 +96,7 @@ body {
 }
 
 #sidebar .mobile-nav a:hover {
-    color: #93c5fd;
+    color: #ffffff;
 }
 
 /* Desktop Sidebar */
@@ -96,12 +136,12 @@ body {
 
     #sidebar nav a {
         display: block;
-        color: #cbd5e1;
+        color: #e2e8f0;
         font-size: 1.05rem;
         font-weight: 500;
         padding: 0.625rem 0.5rem;
         transition: color 0.2s;
-        border-bottom: 1px solid rgba(203, 213, 225, 0.1);
+        border-bottom: 1px solid rgba(203, 213, 225, 0.2);
     }
 
     #sidebar nav a:last-child {
@@ -109,7 +149,7 @@ body {
     }
 
     #sidebar nav a:hover {
-        color: #93c5fd;
+        color: #ffffff;
     }
 
     main {
@@ -176,6 +216,31 @@ main {
     box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
 }
 
+/* Project Image Hover Effect - reveal uncropped original with zoom */
+.project-card img {
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    object-fit: cover;
+    transform-origin: center center;
+    will-change: transform;
+}
+
+.project-card:hover img {
+    object-fit: contain;
+    transform: scale(1.5);
+    background-color: #f9fafb;
+}
+
+/* Respect reduced motion for image hover */
+@media (prefers-reduced-motion: reduce) {
+    .project-card img {
+        transition: none;
+    }
+    .project-card:hover img {
+        transform: none;
+        object-fit: contain;
+    }
+}
+
 /* Section Spacing */
 section {
     padding: 3rem 0;
@@ -195,6 +260,10 @@ section {
     box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
     border: 1px solid #f3f4f6;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
 }
 
 .email-btn {
@@ -215,27 +284,112 @@ section {
 .social-icons {
     display: flex;
     justify-content: center;
-    gap: 1rem;
+    gap: 1.5rem;
     margin-top: 1rem;
+    flex-wrap: wrap;
 }
 
 .social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
     transition: color 0.2s, transform 0.2s;
+    text-decoration: none;
+    color: #374151;
+    font-weight: 500;
+    font-size: 0.95rem;
 }
 
-.social-link.fb { color: #4b5563; }
-.social-link.ig { color: #4b5563; }
+.social-link.fb,
+.social-link.ig {
+    color: #374151;
+}
 
-.social-link:hover.fb,
-.social-link:hover.ig {
+.social-link:hover,
+.social-link:hover .social-name {
     color: #001f3f;
-    transform: scale(1.15);
+    transform: scale(1.05);
 }
 
-/* Footer */
+.social-link svg {
+    flex-shrink: 0;
+}
+
+.social-name {
+    color: inherit;
+    transition: color 0.2s;
+}
+
+/* Footer - improve contrast */
 footer {
     padding: 2rem 0;
     border-top: 1px solid #e5e7eb;
     text-align: center;
-    color: #6b7280;
+    color: #374151; /* Darker gray for better contrast (was #6b7280) */
+}
+
+/* Improve contrast for all muted text */
+.text-gray-500,
+.text-gray-600 {
+    color: #4b5563 !important;
+}
+
+.text-gray-400 {
+    color: #4b5563 !important;
+}
+
+/* Social icons - ensure visible contrast */
+.social-link.fb,
+.social-link.ig {
+    color: #374151;
+}
+
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 48px;
+    height: 48px;
+    background: #001f3f;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.2s ease;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 31, 63, 0.3);
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.back-to-top:hover,
+.back-to-top:focus-visible {
+    background: #003366;
+    transform: translateY(-2px);
+    outline: 3px solid #93c5fd;
+    outline-offset: 2px;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .back-to-top,
+    .modal-overlay,
+    .modal-box {
+        transition: none;
+    }
+
+    html {
+        scroll-behavior: auto;
+    }
 }
