@@ -1,267 +1,550 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Senior Full-Stack Engineer specializing in secure infrastructure and emergency management systems">
-    <meta name="theme-color" content="#001f3f">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crizz | Portfolio</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #001f3f;
+    --navy-mid: #003366;
+    --navy-light: #004080;
+    --accent: #d97706;
+    --text: #1e293b;
+    --muted: #64748b;
+    --surface: #ffffff;
+    --bg: #f1f5f9;
+    --sidebar-w: 240px;
+    --glass-bg: rgba(255,255,255,0.15);
+    --glass-border: rgba(255,255,255,0.3);
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+  }
 
-    
-    <link rel="icon" href="data:,">
+  /* ── SIDEBAR ── */
+  .sidebar {
+    position: fixed; top: 0; left: 0;
+    width: var(--sidebar-w); height: 100vh;
+    background: linear-gradient(160deg, #001f3f 0%, #003366 60%, #004080 100%);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-right: 1px solid var(--glass-border);
+    display: flex; flex-direction: column;
+    z-index: 100;
+    padding: 2rem 1.5rem;
+    overflow: hidden;
+  }
+  .sidebar::before {
+    content: '';
+    position: absolute; top: -60px; right: -60px;
+    width: 200px; height: 200px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .sidebar::after {
+    content: '';
+    position: absolute; bottom: -80px; left: -40px;
+    width: 240px; height: 240px;
+    background: rgba(217,119,6,0.08);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .sidebar-logo {
+    font-size: 1.25rem; font-weight: 700;
+    color: #fff; letter-spacing: 0.04em;
+    margin-bottom: 0.25rem;
+  }
+  .sidebar-tagline {
+    font-size: 0.7rem; color: rgba(255,255,255,0.5);
+    text-transform: uppercase; letter-spacing: 0.08em;
+    margin-bottom: 2.5rem;
+  }
+  .sidebar nav { display: flex; flex-direction: column; gap: 0.5rem; flex: 1; }
+  .sidebar nav a {
+    display: flex; align-items: center; gap: 0.75rem;
+    padding: 0.65rem 1rem;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 0.9rem; font-weight: 500;
+    border-radius: 10px;
+    transition: all 0.2s;
+    position: relative; z-index: 1;
+  }
+  .sidebar nav a:hover, .sidebar nav a.active {
+    background: rgba(255,255,255,0.12);
+    color: #fff;
+  }
+  .sidebar nav a .nav-icon {
+    width: 18px; height: 18px; opacity: 0.8; flex-shrink: 0;
+  }
+  .sidebar-footer {
+    font-size: 0.7rem; color: rgba(255,255,255,0.3);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 1rem; margin-top: auto;
+  }
 
-   
+  /* ── MAIN ── */
+  .main {
+    margin-left: var(--sidebar-w);
+    padding: 0;
+  }
 
-   
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; img-src 'self' data: https:; font-src 'self' data:">
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #001f3f 0%, #003366 50%, #00509e 100%);
+    display: flex; align-items: center; justify-content: center;
+    padding: 4rem 3rem;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -100px; right: -100px;
+    width: 500px; height: 500px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 50%; pointer-events: none;
+  }
+  .hero-inner {
+    max-width: 900px; width: 100%;
+    display: flex; align-items: center; gap: 4rem;
+    position: relative; z-index: 1;
+  }
+  .hero-text { flex: 1; }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(217,119,6,0.2);
+    color: #fbbf24;
+    font-size: 0.75rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    padding: 0.4rem 1rem; border-radius: 999px;
+    border: 1px solid rgba(251,191,36,0.3);
+    margin-bottom: 1.25rem;
+  }
+  .hero h1 {
+    font-size: 2.4rem; font-weight: 700; line-height: 1.2;
+    color: #fff; margin-bottom: 1rem;
+  }
+  .hero p {
+    font-size: 1.05rem; color: rgba(255,255,255,0.6);
+    line-height: 1.7; margin-bottom: 2rem;
+  }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--accent); color: #fff;
+    padding: 0.75rem 1.75rem; border-radius: 10px;
+    text-decoration: none; font-weight: 600; font-size: 0.9rem;
+    transition: opacity 0.2s;
+  }
+  .btn-primary:hover { opacity: 0.85; }
+  .btn-outline {
+    background: rgba(255,255,255,0.08);
+    color: #fff; border: 1px solid rgba(255,255,255,0.25);
+    padding: 0.75rem 1.75rem; border-radius: 10px;
+    text-decoration: none; font-weight: 600; font-size: 0.9rem;
+    transition: background 0.2s;
+  }
+  .btn-outline:hover { background: rgba(255,255,255,0.15); }
+  .hero-img-wrap {
+    width: 280px; height: 280px; flex-shrink: 0;
+    border-radius: 24px; overflow: hidden;
+    border: 2px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.05);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+  .hero-placeholder {
+    font-size: 5rem; color: rgba(255,255,255,0.15);
+  }
 
-   
-    <link rel="preload" href="styles.css" as="style">
+  /* ── SECTION WRAPPER ── */
+  section { padding: 5rem 3rem; }
+  .section-title {
+    font-size: 1.75rem; font-weight: 700; color: var(--navy);
+    margin-bottom: 0.5rem;
+  }
+  .section-sub {
+    font-size: 0.9rem; color: var(--muted);
+    margin-bottom: 2.5rem;
+  }
 
-    <title>Portfolio | Full-Stack Engineer</title>
+  /* ── PROJECTS ── */
+  #projects { background: var(--bg); }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    max-width: 1100px;
+  }
+  .project-card {
+    background: var(--surface);
+    border-radius: 16px;
+    border: 1px solid rgba(0,0,0,0.07);
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0,31,63,0.1);
+  }
+  .project-card-img {
+    width: 100%; aspect-ratio: 16/9;
+    object-fit: cover; background: var(--bg);
+    display: block;
+  }
+  .project-card-body { padding: 1.25rem 1.5rem 1.5rem; }
+  .project-tag {
+    font-size: 0.72rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--accent); margin-bottom: 0.5rem;
+    display: block;
+  }
+  .project-card h3 {
+    font-size: 1.15rem; font-weight: 700;
+    color: var(--navy); margin-bottom: 0.6rem;
+  }
+  .project-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; margin-bottom: 1rem; }
+  .project-detail-label {
+    font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.06em; color: var(--navy-light); margin-bottom: 0.25rem;
+  }
+  .project-detail-text { font-size: 0.82rem; color: var(--muted); margin-bottom: 0.85rem; line-height: 1.5; }
+  .stack-pills { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; }
+  .pill {
+    font-size: 0.72rem; padding: 0.25rem 0.7rem;
+    border-radius: 999px; font-weight: 500;
+  }
+  .pill-blue { background: #dbeafe; color: #1e40af; }
+  .pill-green { background: #dcfce7; color: #166534; }
+  .pill-orange { background: #ffedd5; color: #9a3412; }
+  .pill-purple { background: #ede9fe; color: #5b21b6; }
+  .pill-gray { background: #f1f5f9; color: #334155; }
+  .pill-indigo { background: #e0e7ff; color: #3730a3; }
+  .project-link {
+    font-size: 0.85rem; font-weight: 600;
+    color: var(--navy-light); text-decoration: none;
+    display: inline-flex; align-items: center; gap: 0.3rem;
+  }
+  .project-link:hover { text-decoration: underline; }
 
-    
-    <script src="https://cdn.tailwindcss.com"></script>
+  /* ── RESUME ── */
+  #resume { background: var(--surface); }
+  .resume-inner { max-width: 800px; }
+  .skills-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem; margin-bottom: 2.5rem;
+  }
+  .skill-card {
+    background: var(--bg); border-radius: 12px;
+    padding: 1.25rem; border: 1px solid rgba(0,0,0,0.05);
+  }
+  .skill-card h4 {
+    font-size: 0.85rem; font-weight: 700; color: var(--navy);
+    margin-bottom: 0.75rem;
+  }
+  .skill-card li {
+    list-style: none; font-size: 0.82rem; color: var(--muted);
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.2rem 0;
+  }
+  .skill-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: #10b981; flex-shrink: 0;
+  }
+  .timeline { display: flex; flex-direction: column; gap: 1rem; }
+  .timeline-item {
+    background: var(--bg); border-left: 3px solid var(--navy);
+    border-radius: 0 12px 12px 0; padding: 1.25rem 1.5rem;
+  }
+  .timeline-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 0.4rem;
+  }
+  .timeline-item h4 { font-size: 0.95rem; font-weight: 700; color: var(--navy); }
+  .timeline-date { font-size: 0.78rem; color: var(--muted); }
+  .timeline-item p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
 
+  /* ── CONTACT ── */
+  #contact {
+    background: linear-gradient(135deg, #001f3f 0%, #003366 100%);
+  }
+  #contact .section-title { color: #fff; }
+  #contact .section-sub { color: rgba(255,255,255,0.5); }
+  .contact-glass {
+    background: rgba(255,255,255,0.07);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 20px;
+    padding: 2rem 2.5rem;
+    max-width: 560px;
+  }
+  .contact-glass p { color: rgba(255,255,255,0.65); font-size: 0.9rem; margin-bottom: 1.5rem; }
+  .email-btn {
+    display: inline-block;
+    background: var(--accent); color: #fff;
+    padding: 0.75rem 1.75rem; border-radius: 10px;
+    text-decoration: none; font-weight: 600; font-size: 0.9rem;
+    margin-bottom: 1.5rem; transition: opacity 0.2s;
+  }
+  .email-btn:hover { opacity: 0.85; }
+  .social-row { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .social-btn {
+    display: flex; align-items: center; gap: 0.5rem;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.8);
+    padding: 0.6rem 1rem; border-radius: 10px;
+    text-decoration: none; font-size: 0.82rem; font-weight: 500;
+    transition: background 0.2s;
+  }
+  .social-btn:hover { background: rgba(255,255,255,0.15); color: #fff; }
+  .social-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
 
-    <link rel="stylesheet" href="styles.css">
+  /* ── FOOTER ── */
+  footer {
+    margin-left: 0;
+    background: #000d1a;
+    color: rgba(255,255,255,0.3);
+    text-align: center; padding: 1.5rem;
+    font-size: 0.78rem;
+  }
+
+  /* ── BACK TO TOP ── */
+  .back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem;
+    background: var(--navy); color: #fff;
+    width: 40px; height: 40px; border-radius: 50%;
+    border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; transition: opacity 0.3s;
+    z-index: 200;
+  }
+  .back-to-top.visible { opacity: 1; }
+  .back-to-top:hover { background: var(--navy-mid); }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    .sidebar { width: 100%; height: auto; position: relative; flex-direction: row; flex-wrap: wrap; padding: 1rem 1.5rem; gap: 1rem; align-items: center; border-right: none; border-bottom: 1px solid var(--glass-border); }
+    .sidebar nav { flex-direction: row; gap: 0.25rem; }
+    .sidebar-footer, .sidebar-tagline { display: none; }
+    .sidebar::before, .sidebar::after { display: none; }
+    .main { margin-left: 0; }
+    .hero { padding: 3rem 1.5rem; min-height: auto; }
+    .hero-inner { flex-direction: column; gap: 2rem; text-align: center; }
+    .hero-img-wrap { width: 180px; height: 180px; }
+    .hero h1 { font-size: 1.75rem; }
+    .hero-btns { justify-content: center; }
+    section { padding: 3rem 1.5rem; }
+  }
+</style>
 </head>
-<body class="bg-gray-500 text-gray-900 min-h-screen">
-    <!-- Skip to main content for keyboard users -->
-    <a href="#main-content" class="skip-link">Skip to main content</a>
+<body>
 
-    <!-- Navigation Sidebar -->
-    <nav class="text-white bg-red-700" id="sidebar" aria-label="Main navigation">
-        <div class="sidebar-inner">
-            <h2>Crizz Portfolio</h2>
-            <ul class="mobile-nav">
-                <li><a href="#hero">Home</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#resume">Resume</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <nav>
-                <a href="#hero">Home</a>
-                <a href="#projects">Projects</a>
-                <a href="#resume">Resume</a>
-                <a href="#contact">Contact</a>
-            </nav>
+<aside class="sidebar" aria-label="Main navigation">
+  <div class="sidebar-logo">Crizz</div>
+  <div class="sidebar-tagline">STUDENT</div>
+  <nav>
+    <a href="#hero" class="active">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      Home
+    </a>
+    <a href="#projects">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      Projects
+    </a>
+    <a href="#resume">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      Resume
+    </a>
+    <a href="#contact">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      Contact
+    </a>
+  </nav>
+  <div class="sidebar-footer">© 2025 Crizz Portfolio</div>
+</aside>
+
+<main class="main">
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero">
+      <div class="hero-inner">
+        <div class="hero-text">
+          <span class="hero-badge">Bachelor of Science in Information Technology</span>
+          <h1>Building secure, centralized infrastructure that scales with your mission</h1>
+          <p>Designing emergency management systems where downtime means the difference between success and failure.</p>
+          <div class="hero-btns">
+            <a href="#projects" class="btn-primary">View Projects</a>
+            <a href="#contact" class="btn-outline">Get in Touch</a>
+          </div>
         </div>
-    </nav>
+        <div class="hero-img-wrap">
+          <img src="profile.png" alt="Profile photo" onerror="this.style.display='none'; this.parentElement.querySelector('.hero-placeholder').style.display='flex';">
+          <div class="hero-placeholder" style="display:none; width:100%; height:100%; align-items:center; justify-content:center;">👤</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-     <!-- Main Content -->
-     <main class="p-4 md:ml-64 md:pl-8 md:pr-8 md:py-8" id="main-content" tabindex="-1">
-        <!-- Hero Section -->
-        <section id="hero" class="min-h-[60vh] md:min-h-screen flex items-center justify-center py-12 md:py-20">
-            <div class="max-w-7xl mx-auto px-4 w-full">
-                <div class="flex flex-col md:flex-row items-center gap-8 md:gap-16">
-                    <!-- Left side: Description -->
-                    <div class="flex-1 text-center md:text-left">
-                        <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 text-navy-900">
-                            Building secure, centralized infrastructure that scales with your mission
-                        </h1>
-                        <p class="text-lg md:text-xl lg:text-2xl text-white-900 mb-6 md:mb-8">
-                            I’m a student aspiring to become a front-end web developer, focused on building clean and responsive interfaces.
-                        </p>
-                        <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                            <a href="#projects" class="bg-navy-900 text-white px-6 md:px-8 py-3 rounded-lg hover:bg-navy-800 transition">View Projects</a>
-                            <a href="#contact" class="border-2 border-navy-900 text-navy-900 px-6 md:px-8 py-3 rounded-lg hover:bg-navy-50 transition">Get in Touch</a>
-                        </div>
-                    </div>
-                    <!-- Right side: Image Slot -->
-                    <div class="flex-1 w-full flex justify-center">
-                        <div class="image-slot w-64 h-64 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem] bg-gray-200 rounded-full overflow-hidden shadow-2xl border-4 border-white">
-                            <!-- Replace src with your image path -->
-                            <img src="profile.png" alt="Profile" class="w-full h-full object-cover" loading="lazy">
-                        </div>
-                    </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+  <!-- PROJECTS -->
+  <section id="projects">
+    <h2 class="section-title">Featured Projects</h2>
+    <p class="section-sub">A selection of systems built for reliability and scale.</p>
+    <div class="projects-grid">
 
-        <!-- Projects Gallery -->
-        <section id="projects" class="py-12 md:py-20">
-            <h2 class="text-2xl md:text-4xl font-bold mb-8 md:mb-12 text-center text-navy-900">Featured Projects</h2>
-            <div class="project-grid max-w-7xl mx-auto px-4">
-                <!-- Project 1: Emergency Dispatch System -->
-                <article class="project-card bg-white rounded-lg shadow-lg overflow-hidden border border-gray-100" data-project="1">
-                    <!-- Replace with your image: dispatch.png -->
-                    <img src="dispatch.png" alt="Emergency Dispatch System" class="w-full aspect-video object-cover bg-gray-100" loading="lazy">
-                    <div class="p-4 md:p-6">
-                        <span class="text-sm font-semibold text-blue-600">Centralized Emergency Dispatch System</span>
-                        <h3 class="text-lg md:text-2xl font-bold mt-2 mb-2 md:mb-4 text-navy-900">SAFEZONE</h3>
-                        <p class="text-gray-600 mb-3 md:mb-4 text-sm md:text-base">
-                            A real-time dispatch platform coordinating emergency responders across multiple jurisdictions during critical incidents.
-                        </p>
-                        <div class="mb-3 md:mb-4">
-                            <h4 class="font-semibold text-sm mb-1 md:mb-2 text-navy-800">Problem</h4>
-                            <p class="text-gray-600 text-sm">
-                                Fragmented communication between agencies caused 12-minute average response delays during multi-agency emergencies.
-                            </p>
-                        </div>
-                        <div class="mb-3 md:mb-4">
-                            <h4 class="font-semibold text-sm mb-1 md:mb-2 text-navy-800">Solution</h4>
-                            <p class="text-gray-600 text-sm">
-                                Built centralized WebSocket-based dispatch platform with role-based access control, reducing coordination overhead by 70%.
-                            </p>
-                        </div>
-                        <div class="mb-4 md:mb-6">
-                            <h4 class="font-semibold text-sm mb-2 text-navy-800">Tech Stack</h4>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-2 md:px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">JavaScript</span>
-                                <span class="px-2 md:px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs">SupabaseSQL</span>
-                                <span class="px-2 md:px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-xs">HTML</span>
-                            </div>
-                        </div>
-                        <a href="#" class="project-link text-navy-700 font-semibold hover:underline text-sm md:text-base">View Case Study →</a>
-                    </div>
-                </article>
+      <article class="project-card">
+        <img src="dispatch.png" alt="Emergency Dispatch System" class="project-card-img" onerror="this.style.background='#dbeafe';">
+        <div class="project-card-body">
+          <span class="project-tag">Emergency Dispatch</span>
+          <h3>SAFEZONE</h3>
+          <p>Real-time dispatch platform coordinating emergency responders across multiple jurisdictions during critical incidents.</p>
+          <div class="project-detail-label">Problem</div>
+          <div class="project-detail-text">Fragmented communication caused 12-minute average response delays during multi-agency emergencies.</div>
+          <div class="project-detail-label">Solution</div>
+          <div class="project-detail-text">WebSocket-based dispatch with role-based access control — reduced coordination overhead by 70%.</div>
+          <div class="stack-pills">
+            <span class="pill pill-blue">JavaScript</span>
+            <span class="pill pill-green">SupabaseSQL</span>
+            <span class="pill pill-orange">HTML</span>
+          </div>
+          <a href="#" class="project-link">View Case Study →</a>
+        </div>
+      </article>
 
-                <!-- Project 2: Security Platform -->
-                <article class="project-card bg-white rounded-lg shadow-lg overflow-hidden border border-gray-100" data-project="2">
-                    <!-- Replace with your image: security.jpg -->
-                    <img src="shoes.png" alt="NYEK Sneaker Shop product page showing sneaker listings" class="w-full aspect-video object-cover bg-gray-100" loading="lazy">
-                    <div class="p-4 md:p-6">
-                        <span class="text-sm font-semibold text-red-600">Online Shoe Reselling Site</span>
-                        <h3 class="text-lg md:text-2xl font-bold mt-2 mb-2 md:mb-4 text-navy-900">NYEK SNEAKER SHOP</h3>
-                        <p class="text-gray-600 mb-3 md:mb-4 text-sm md:text-base">
-                            An automated marketplace and authentication engine connecting independent sellers with global collectors, specializing in deadstock and limited-edition releases.
-                        </p>
-                        <div class="mb-3 md:mb-4">
-                            <h4 class="font-semibold text-sm mb-1 md:mb-2 text-navy-800">Problem</h4>
-                            <p class="text-gray-600 text-sm">
-                               The "manual" era of shoe reselling relied on risky peer-to-peer transactions. Sellers struggled with inconsistent pricing due to rapid market shifts, while buyers faced a high volume of counterfeit products, leading to low trust and lost revenue.
-                            </p>
-                        </div>
-                        <div class="mb-3 md:mb-4">
-                            <h4 class="font-semibold text-sm mb-1 md:mb-2 text-navy-800">Solution</h4>
-                            <p class="text-gray-600 text-sm">
-                                We launched a centralized marketplace that integrates real-time global market data to provide sellers with accurate, dynamic pricing suggestions. To eliminate fraud, the platform utilizes a hybrid authentication model combining AI-driven image recognition with expert physical inspections. This secure ecosystem uses an escrow payment system that only releases funds once a pair is verified, effectively cutting chargebacks by 88%.
-                            </p>
-                        </div>
-                         <div class="mb-4 md:mb-6">
-                             <h4 class="font-semibold text-sm mb-2 text-navy-800">Tech Stack</h4>
-                             <div class="flex flex-wrap gap-2">
-                                 <span class="px-2 md:px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-xs">HTML</span>
-                                 <span class="px-2 md:px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs">Tailwind CSS</span>
-                                 <span class="px-2 md:px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-xs">JavaScript</span>
-                             </div>
-                         </div>
-                         <a href="#" class="project-link text-navy-700 font-semibold hover:underline text-sm md:text-base">Read More →</a>
-                    </div>
-                </article>
+      <article class="project-card">
+        <img src="shoes.png" alt="NYEK Sneaker Shop" class="project-card-img" onerror="this.style.background='#ede9fe';">
+        <div class="project-card-body">
+          <span class="project-tag">Online Marketplace</span>
+          <h3>NYEK Sneaker Shop</h3>
+          <p>Automated marketplace and authentication engine connecting sellers with global collectors for deadstock and limited-edition releases.</p>
+          <div class="project-detail-label">Problem</div>
+          <div class="project-detail-text">Manual peer-to-peer transactions created pricing inconsistency and high counterfeit risk, eroding buyer trust.</div>
+          <div class="project-detail-label">Solution</div>
+          <div class="project-detail-text">Centralized platform with AI-driven authentication, real-time pricing, and escrow payments — cut chargebacks by 88%.</div>
+          <div class="stack-pills">
+            <span class="pill pill-orange">HTML</span>
+            <span class="pill pill-green">Tailwind CSS</span>
+            <span class="pill pill-gray">JavaScript</span>
+          </div>
+          <a href="#" class="project-link">Read More →</a>
+        </div>
+      </article>
 
-                <!-- Project 3: Infrastructure Dashboard -->
-                <article class="project-card bg-white rounded-lg shadow-lg overflow-hidden border border-gray-100" data-project="3">
-                    <!-- Replace with your image: cloud.png -->
-                    <img src="data.png" alt="Infrastructure Orchestrator dashboard interface" class="w-full aspect-video object-cover bg-gray-100" loading="lazy">
-                    <div class="p-4 md:p-6">
-                        <span class="text-sm font-semibold text-green-600"> PC Accessories Online Shop</span>
-                        <h3 class="text-lg md:text-2xl font-bold mt-2 mb-2 md:mb-4 text-navy-900"> DATABAE</h3>
-                        <p class="text-gray-600 mb-3 md:mb-4 text-sm md:text-base">
-                            A modern e-commerce platform for browsing and purchasing PC components and accessories, designed for gamers, builders, and tech enthusiasts.
-                        </p>
-                        <div class="mb-3 md:mb-4">
-                            <h4 class="font-semibold text-sm mb-1 md:mb-2 text-navy-800">Problem</h4>
-                            <p class="text-gray-600 text-sm">
-                                Customers struggled to find reliable, well-priced PC parts across multiple platforms, leading to inconsistent product availability and time-consuming comparisons.
-                            </p>
-                        </div>
-                        <div class="mb-3 md:mb-4">
-                            <h4 class="font-semibold text-sm mb-1 md:mb-2 text-navy-800">Solution</h4>
-                            <p class="text-gray-600 text-sm">
-                                Developed a user-friendly mobile app with real-time inventory, smart search, and curated recommendations—streamlining the buying process and improving purchase efficiency.
-                            </p>
-                        </div>
-                        <div class="mb-4 md:mb-6">
-                            <h4 class="font-semibold text-sm mb-2 text-navy-800">Tech Stack</h4>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-2 md:px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-xs"> Figma</span>
-                            </div>
-                        </div>
-                        <a href="#" class="project-link text-navy-700 font-semibold hover:underline text-sm md:text-base">Explore Project →</a>
-                    </div>
-                </article>
-            </div>
-        </section>
+      <article class="project-card">
+        <img src="data.png" alt="DATABAE PC Shop" class="project-card-img" onerror="this.style.background='#dcfce7';">
+        <div class="project-card-body">
+          <span class="project-tag">PC Accessories E-commerce</span>
+          <h3>DATABAE</h3>
+          <p>Modern e-commerce platform for browsing and purchasing PC components, designed for gamers, builders, and tech enthusiasts.</p>
+          <div class="project-detail-label">Problem</div>
+          <div class="project-detail-text">Customers struggled to find reliable, well-priced PC parts across fragmented platforms.</div>
+          <div class="project-detail-label">Solution</div>
+          <div class="project-detail-text">Mobile app with real-time inventory, smart search, and curated recommendations — streamlining the buying process.</div>
+          <div class="stack-pills">
+            <span class="pill pill-indigo">Figma</span>
+          </div>
+          <a href="#" class="project-link">Explore Project →</a>
+        </div>
+      </article>
 
-        <!-- Live Resume Section -->
-        <section id="resume" class="py-12 md:py-20 bg-gray-50">
-            <div class="max-w-4xl mx-auto px-4">
-                <h2 class="text-2xl md:text-4xl font-bold mb-8 md:mb-12 text-center text-navy-900">Professional Resume</h2>
+    </div>
+  </section>
 
-                <!-- Technical Skills -->
-                <div class="mb-8 md:mb-12">
-                    <h3 class="text-xl md:text-2xl font-semibold mb-4 md:mb-6 text-navy-800">Technical Skills</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-                        <div class="skill-category bg-white p-4 md:p-6 rounded-lg shadow">
-                            <h4 class="font-semibold mb-2 md:mb-3 text-navy-700">Full-Stack Development</h4>
-                            <ul class="space-y-1 md:space-y-2 text-sm md:text-base text-gray-600">
-                                <li class="flex items-center">
-                                    <span class="w-2 h-2 bg-green-500 rounded-full mr-2 md:mr-3"></span>
-                                    HTML, CSS, Tailwind, JavaScript, SupabaseSQL
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+  <!-- RESUME -->
+  <section id="resume">
+    <div class="resume-inner">
+      <h2 class="section-title">Professional Resume</h2>
+      <p class="section-sub">Skills, experience, and background.</p>
 
-                <!-- Experience Timeline -->
-                <div>
-                    <h3 class="text-xl md:text-2xl font-semibold mb-4 md:mb-6 text-navy-800">Experience</h3>
-                    <div class="space-y-4 md:space-y-6">
-                        <div class="experience-item bg-white p-4 md:p-6 rounded-lg shadow border-l-4 border-navy-900">
-                            <div class="flex flex-col md:flex-row md:justify-between mb-2">
-                                <h4 class="text-base md:text-lg font-semibold text-navy-900">Student</h4>
-                                <span class="text-gray-500 text-sm">Present</span>
-                            </div>
-                            <p class="text-gray-600 text-sm md:text-base">Currently pursuing a degree in Information Technology with a focus on full-stack development.</p>
-                        </div>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h4>Full-Stack Development</h4>
+          <ul>
+            <li><span class="skill-dot"></span>HTML &amp; CSS</li>
+            <li><span class="skill-dot"></span>Tailwind CSS</li>
+            <li><span class="skill-dot"></span>JavaScript</li>
+            <li><span class="skill-dot"></span>SupabaseSQL</li>
+          </ul>
+        </div>
+        <div class="skill-card">
+          <h4>Design &amp; Tools</h4>
+          <ul>
+            <li><span class="skill-dot"></span>Figma</li>
+            <li><span class="skill-dot"></span>UI/UX Prototyping</li>
+            <li><span class="skill-dot"></span>Git</li>
+          </ul>
+        </div>
+      </div>
 
-                    </div>
-                </div>
-            </div>
-        </section>
+      <h3 style="font-size:1.1rem; font-weight:700; color:var(--navy); margin-bottom:1rem;">Experience</h3>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <h4>Student — Information Technology</h4>
+            <span class="timeline-date">Present</span>
+          </div>
+          <p>Pursuing a degree in Information Technology with a focus on full-stack development and secure system design.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="py-12 md:py-20">
-            <div class="max-w-2xl mx-auto px-4">
-                <h2 class="text-2xl md:text-4xl font-bold mb-4 text-center text-navy-900">Get in Touch</h2>
-                <p class="text-center text-gray-600 mb-8 md:mb-12">
-                    Interested in collaborating on emergency management systems or secure infrastructure projects? Let's connect.
-                </p>
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2 class="section-title">Get in Touch</h2>
+    <p class="section-sub">Interested in collaborating? Let's connect.</p>
+    <div class="contact-glass">
+      <p>I'd love to hear about your project. Reach out and let's discuss how I can help.</p>
+      <a href="https://mail.google.com/mail/?view=cm&to=lancebravo552@gmail.com" target="_blank" class="email-btn">Send an Email</a>
+      <div class="social-row">
+        <a href="https://www.facebook.com/crisjermaine.bravo" target="_blank" class="social-btn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          Cris Jermaine Bravo
+        </a>
+        <a href="https://www.instagram.com/criz.py_" target="_blank" class="social-btn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          @criz.py_
+        </a>
+      </div>
+    </div>
+  </section>
 
-                 <div class="contact-box">
-                     <p class="text-gray-600 mb-4 md:mb-6">I'd love to hear about your project. Reach out and let's discuss how I can help.</p>
-                     <a href="https://mail.google.com/mail/?view=cm&to=lancebravo552@gmail.com" target="_blank" class="email-btn">
-                         Send an Email
-                     </a>
-                      <div class="social-icons">
-                          <a href="https://www.facebook.com/crisjermaine.bravo" target="_blank" class="social-link fb">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                              <span class="social-name">Cris Jermaine Bravo</span>
-                          </a>
-                          <a href="https://www.instagram.com/criz.py_" target="_blank" class="social-link ig">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-                              <span class="social-name">@criz.py_</span>
-                          </a>
-                      </div>
-                 </div>
-            </div>
-        </section>
+  <footer>© 2025 Crizz Portfolio. Built with performance and security in mind.</footer>
 
-        <!-- Back to top button -->
-        <button id="backToTop" class="back-to-top" aria-label="Back to top" type="button">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M18 15l-6-6-6 6"/>
-            </svg>
-        </button>
+</main>
 
-        <!-- Footer -->
-        <footer class="py-8 border-t border-gray-200 text-center text-gray-500">
-            <p>&copy; 2025 Portfolio. Built with performance and security in mind.</p>
-        </footer>
-    </main>
+<button class="back-to-top" id="btt" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+
+<script>
+  const btt = document.getElementById('btt');
+  window.addEventListener('scroll', () => {
+    btt.classList.toggle('visible', window.scrollY > 300);
+  });
+
+  const links = document.querySelectorAll('.sidebar nav a');
+  const sections = ['hero','projects','resume','contact'];
+  window.addEventListener('scroll', () => {
+    let cur = 'hero';
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && window.scrollY >= el.offsetTop - 120) cur = id;
+    });
+    links.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + cur);
+    });
+  });
+</script>
+
+
 </body>
 </html>
