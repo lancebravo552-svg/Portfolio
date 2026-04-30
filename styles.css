@@ -8,48 +8,11 @@ html {
     scroll-behavior: smooth;
 }
 
-/* Skip Link for Keyboard Navigation */
-.skip-link {
-    position: absolute;
-    top: -40px;
-    left: 0;
-    background: #001f3f;
-    color: white;
-    padding: 8px 16px;
-    z-index: 10000;
-    text-decoration: none;
-    font-weight: 600;
-    border-radius: 0 0 8px 0;
-    transition: top 0.2s;
-}
-
-.skip-link:focus {
-    top: 0;
-    outline: 3px solid #93c5fd;
-    outline-offset: 2px;
-}
-
-/* Enhanced Focus Visible Styles for Accessibility */
-*:focus-visible {
-    outline: 3px solid #2563eb;
-    outline-offset: 2px;
-}
-
-/* Remove default focus for mouse users but keep for keyboard */
-*:focus:not(:focus-visible) {
-    outline: none;
-}
-
-/* Custom focus for buttons and links */
-a:focus-visible,
-button:focus-visible {
-    outline: 3px solid #2563eb;
-    outline-offset: 3px;
-    border-radius: 4px;
-}
+/* Custom Font - Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     line-height: 1.6;
     color: #111827;
     background-color: #ffffff;
@@ -57,12 +20,16 @@ body {
 
 /* Sidebar - Mobile: sticky top nav, Desktop: fixed side nav */
 #sidebar {
-    background-color: #001f3f;
+    background: rgba(249, 115, 22, 0.15);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
     color: white;
     position: sticky;
     top: 0;
     z-index: 40;
     padding: 1rem 1.25rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
 }
 
 #sidebar .sidebar-inner {
@@ -75,6 +42,7 @@ body {
     font-size: 1.125rem;
     font-weight: 700;
     white-space: nowrap;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 #sidebar nav {
@@ -91,12 +59,14 @@ body {
     color: #e2e8f0;
     font-size: 0.875rem;
     font-weight: 500;
-    transition: color 0.2s;
+    transition: all 0.2s;
     white-space: nowrap;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 #sidebar .mobile-nav a:hover {
     color: #ffffff;
+    transform: translateY(-1px);
 }
 
 /* Desktop Sidebar */
@@ -110,6 +80,9 @@ body {
         padding: 2rem 1.5rem;
         display: flex;
         flex-direction: column;
+        border-bottom: none;
+        border-right: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 0;
     }
 
     #sidebar .sidebar-inner {
@@ -121,6 +94,9 @@ body {
     #sidebar h2 {
         font-size: 1.25rem;
         margin-bottom: 2.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        width: 100%;
     }
 
     #sidebar .mobile-nav {
@@ -132,6 +108,7 @@ body {
         flex-direction: column;
         gap: 0.25rem;
         flex: 1;
+        width: 100%;
     }
 
     #sidebar nav a {
@@ -140,8 +117,11 @@ body {
         font-size: 1.05rem;
         font-weight: 500;
         padding: 0.625rem 0.5rem;
-        transition: color 0.2s;
+        transition: all 0.2s;
         border-bottom: 1px solid rgba(203, 213, 225, 0.2);
+        border-radius: 6px;
+        margin-bottom: 0.25rem;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     }
 
     #sidebar nav a:last-child {
@@ -150,6 +130,8 @@ body {
 
     #sidebar nav a:hover {
         color: #ffffff;
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateX(4px);
     }
 
     main {
@@ -170,7 +152,6 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
 }
 
 #hero h1 {
@@ -184,8 +165,25 @@ main {
     color: #4b5563;
     margin-bottom: 2rem;
     max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+}
+
+/* Image Slot Styling */
+.image-slot {
+    box-shadow: 0 20px 40px -10px rgba(0, 31, 63, 0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image-slot:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 25px 50px -12px rgba(0, 31, 63, 0.35);
+}
+
+.image-slot img {
+    transition: transform 0.3s ease;
+}
+
+.image-slot:hover img {
+    transform: scale(1.02);
 }
 
 /* Project Cards */
